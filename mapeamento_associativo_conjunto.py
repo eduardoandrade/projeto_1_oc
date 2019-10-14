@@ -23,11 +23,11 @@ def executar_mapeamento_associativo_conjunto(tam_cache, num_conjuntos, posicoes_
 
   # se a politica for FIFO entao inicializa a lista de controle
   if politica_substituicao == 'FIFO':
-    functions.inicializar_contador_fifo()
+    functions.inicializar_contador_fifo( num_conjuntos)
 
   # se a politica for LFU entao inicializa a lista de controle
   if politica_substituicao == 'LFU':
-    functions.inicializar_contador_lfu()
+    functions.inicializar_contador_lfu(tam_cache)
 
   # percorre cada uma das posicoes de memoria que estavam no arquivo
   for index, posicao_memoria in enumerate(posicoes_acesso_memoria):
