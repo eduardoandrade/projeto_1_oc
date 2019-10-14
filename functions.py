@@ -20,7 +20,7 @@ def imprimir_contador_fifo():
     print("|{:>9}|{:>28}|".format(index,x))
   print('+---------+----------------------------+')
   
-def inicializar_contador_fifo():
+def inicializar_contador_fifo(num_conjuntos):
   """Preenche o contador fifo para que a primeira subsitituicao
   ocorra no primeiro elemento do conjunto
   """
@@ -41,7 +41,7 @@ def imprimir_contador_lfu():
     print("|{:>9}|{:>28}|".format(index,contador_lfu[x]))
   print('+---------+----------------------------+')
   
-def inicializar_contador_lfu():
+def inicializar_contador_lfu(tam_cache):
   """Preenche o contador LFU para cada posicao da cache. Todas as posicao comecam zeradas e a cada
   cache hit a posicao e incrementada, a posicao e zerada quando for substituida
   """
