@@ -12,7 +12,7 @@ def inicializar_contador_fifo(num_conjuntos):
   for x in range(0, num_conjuntos):
     contador_fifo[x] = 0
 
-
+  return contador_fifo
   functions.imprimir_contador_fifo(contador_fifo)
 
 def inicializar_contador_lfu(tam_cache):
@@ -23,7 +23,7 @@ def inicializar_contador_lfu(tam_cache):
   for x in range(0, tam_cache):
     contador_lfu[x] = 0
 
-
+  return contador_lfu
   functions.imprimir_contador_lfu(contador_lfu)
 
 def executar_mapeamento_associativo_conjunto(tam_cache, num_conjuntos, posicoes_acesso_memoria, politica_substituicao):
@@ -45,11 +45,11 @@ def executar_mapeamento_associativo_conjunto(tam_cache, num_conjuntos, posicoes_
 
   # se a politica for FIFO entao inicializa a lista de controle
   if politica_substituicao == 'FIFO':
-    inicializar_contador_fifo( num_conjuntos)
+    contador_fifo=inicializar_contador_fifo( num_conjuntos)
 
   # se a politica for LFU entao inicializa a lista de controle
   if politica_substituicao == 'LFU':
-    inicializar_contador_lfu(tam_cache)
+    contador_lfu=inicializar_contador_lfu(tam_cache)
 
   # percorre cada uma das posicoes de memoria que estavam no arquivo
   for index, posicao_memoria in enumerate(posicoes_acesso_memoria):
@@ -90,9 +90,9 @@ def executar_mapeamento_associativo_conjunto(tam_cache, num_conjuntos, posicoes_
       elif politica_substituicao == 'RANDOM':
         aleatorio.politica_substituicao_RANDOM(memoria_cache,num_conjuntos,posicao_memoria)
       elif politica_substituicao == 'FIFO':
-        fifo.politica_substituicao_FIFO(memoria_cache,num_conjuntos,posicao_memoria,contador_fifo)
+        contador_fifo=fifo.politica_substituicao_FIFO(memoria_cache,num_conjuntos,posicao_memoria,contador_fifo)
       elif politica_substituicao == 'LFU':
-        lfu.politica_substituicao_LFU(memoria_cache,num_conjuntos,posicao_memoria,contador_lfu)
+        contador_lfu=lfu.politica_substituicao_LFU(memoria_cache,num_conjuntos,posicao_memoria,contador_lfu)
       elif politica_substituicao == 'LRU':
         lru.politica_substituicao_LRU(memoria_cache,num_conjuntos,posicao_memoria,0,0)
 
