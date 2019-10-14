@@ -4,7 +4,27 @@ import lru
 import lfu
 import aleatorio
 
+def inicializar_contador_fifo(num_conjuntos):
+  """Preenche o contador fifo para que a primeira subsitituicao
+  ocorra no primeiro elemento do conjunto
+  """
+  # cria no contador fifo uma posicao para cada conjunto e preenche com a primeira posicao
+  for x in range(0, num_conjuntos):
+    contador_fifo[x] = 0
 
+
+  functions.imprimir_contador_fifo(contador_fifo)
+
+def inicializar_contador_lfu(tam_cache):
+  """Preenche o contador LFU para cada posicao da cache. Todas as posicao comecam zeradas e a cada
+  cache hit a posicao e incrementada, a posicao e zerada quando for substituida
+  """
+  # cria on contador LFU uma posicao para cada posicao de memoria
+  for x in range(0, tam_cache):
+    contador_lfu[x] = 0
+
+
+  functions.imprimir_contador_lfu(contador_lfu)
 
 def executar_mapeamento_associativo_conjunto(tam_cache, num_conjuntos, posicoes_acesso_memoria, politica_substituicao):
   """Executa a operacaoo de mapeamento associativo por conjunto
@@ -45,7 +65,7 @@ def executar_mapeamento_associativo_conjunto(tam_cache, num_conjuntos, posicoes_
       # se for LFU entao toda vez que der um HIT será incrementado o contador daquela posição
       if politica_substituicao == 'LFU':
         contador_lfu[inserir_memoria_na_posicao_cache] += 1
-        functions.imprimir_contador_lfu()
+        functions.imprimir_contador_lfu(contador_lfu)
 
       # se for LRU entao toda vez que der um HIT sera incrementado o contador daquela posicao
       if politica_substituicao == 'LRU':
@@ -85,7 +105,7 @@ def executar_mapeamento_associativo_conjunto(tam_cache, num_conjuntos, posicoes_
 
 
   if politica_substituicao == 'LFU':
-    functions.imprimir_contador_lfu()
+    functions.imprimir_contador_lfu(contador_lfu)
 
   print('\n\n-----------------')
   print('Resumo Mapeamento {}'.format(nome_mapeamento))
