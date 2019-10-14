@@ -17,7 +17,7 @@ def imprimir_contador_fifo(contador_fifo):
   print("|Conjunto | Próxima Posição Substituir |")
   print('+---------+----------------------------+')
   for index, x in enumerate(contador_fifo):
-    print("|{:>9}|{:>28}|".format(index,x))
+    print("|{:>9}|{:>28}|".format(index,contador[x]))
   print('+---------+----------------------------+')
   
 
