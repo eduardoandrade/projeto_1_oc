@@ -1,18 +1,18 @@
 import functions
 
-def politica_substituicao_LFU(memoria_cache, num_conjuntos, posicao_memoria):
+def politica_substituicao_LFU(memoria_cache, num_conjuntos, posicao_memoria,contador_lfu):
   """Nessa politica de substituicao, o elemento menos acessado e removido. 
   A cada cache hit a posicao e incrementada, isso e usado para saber qual a proxima posicao deve ser removida
   """
-  num_conjunto = get_num_conjunto_posicao_memoria(posicao_memoria, num_conjuntos)
-  lista_posicoes = get_lista_posicoes_cache_conjunto(memoria_cache,num_conjunto, num_conjuntos)
+  num_conjunto = functions.get_num_conjunto_posicao_memoria(posicao_memoria, num_conjuntos)
+  lista_posicoes = functions.get_lista_posicoes_cache_conjunto(memoria_cache,num_conjunto, num_conjuntos)
 
   # descobre qual posicao da cache tem menos acesso
   posicao_substituir = 0
   if len(lista_posicoes) > 1:
 
 
-    imprimir_contador_lfu()
+    functions.imprimir_contador_lfu(contador_lfu)
 
     # descobre qual das posicoes e menos usada
     lista_qtd_acessos = []
@@ -34,6 +34,8 @@ def politica_substituicao_LFU(memoria_cache, num_conjuntos, posicao_memoria):
 
   # altera a posicao de memoria na cache
   memoria_cache[posicao_substituir] = posicao_memoria
+  
+  return contador_lfu
 
   print('Posição Memória Lida No Arquivo: {}'.format(posicao_memoria))
   print('Conjunto: {}'.format(num_conjunto))
