@@ -1,4 +1,5 @@
 import functions
+import random 
 
 def politica_substituicao_RANDOM(memoria_cache, num_conjuntos, posicao_memoria):
   """Nessa politica de substituição, cada vez que ocorre um evento de cache miss,
