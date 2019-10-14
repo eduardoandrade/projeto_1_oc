@@ -30,7 +30,7 @@ else:
 if tipo_mapeamento != 'DI' : 
   politica_substituicao  = input('\nInsira o tipo de algoritmo de substituicao da memoria cache a ser utilizado (FIFO, RANDOM, LFU, LRU ou ALL = Todos os mapeamentos possiveis:')
 else:
-  tipo_mapeamento = 'ALL'
+  politica_substituicao = 'ALL'
 
 
 if num_conjuntos <= 0:
