@@ -21,4 +21,5 @@ def politica_substituicao_FIFO(memoria_cache, num_conjuntos, posicao_memoria,con
     contador_fifo[num_conjunto] = 0
 
 
+  return contador_fifo
   print('Posição de memória cache que será trocada é: {}'.format(lista_posicoes[posicao_substituir]))
