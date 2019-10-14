@@ -1,9 +1,9 @@
 import functions
 
 def politica_substituicao_LRU(memoria_cache, num_conjuntos, posicao_memoria, posicao_cache_hit, flag_hit):
-  """Nessa politica de substituição quando ocorre um HIT a posição vai para o topo da fila,
-  se ocorrer um MISS remove o elemento 0 e a posição da cache onde a memória foi alocada é
-  colocada no topo da fila
+  """Nessa politica de substituicao quando ocorre um cache hit a posicao vai para o fim da fila,
+  se ocorrer um cache miss remove o elemento 0 e a posição da cache onde a memória foi alocada e
+  colocada no fim da fila
   """
 
   num_conjunto = get_num_conjunto_posicao_memoria(posicao_memoria, num_conjuntos)
@@ -11,25 +11,18 @@ def politica_substituicao_LRU(memoria_cache, num_conjuntos, posicao_memoria, pos
 
 
 
-  if flag_hit ==0: # copiar os valores de cada posição da cache do conjunto em questão uma posição para traz
+  if flag_hit ==0: # copia os valores de cada posicao da cache uma posição para traz em caso de miss
       for posicao_cache in lista_posicoes:
         proxima_posicao = posicao_cache+num_conjuntos
         if proxima_posicao < len(memoria_cache):
           memoria_cache[posicao_cache] = memoria_cache[proxima_posicao]
-  if flag_hit ==1:  # copiar os valores de cada posição da cache do conjunto em questão uma posição para traz
+  if flag_hit ==1:  # copia os valores de cada posicao da cache uma posição para traz em caso de hit
       for posicao_cache in lista_posicoes:
         if posicao_cache_hit <= posicao_cache:
-          # em uma cache com 4 conjuntos e 20 posições, as posições do 'conjunto 0' são:
-          # [0, 4, 8, 12, 16], se o hit for na poição 4, então, então, será necessário copiar os dados da posição
-          # 0 não faz nada
-          # 4 <- 8
-          # 8 <- 12
-          # 12 <- 16
-          # 16 <- 4
           proxima_posicao = posicao_cache+num_conjuntos
           if proxima_posicao < len(memoria_cache):
             memoria_cache[posicao_cache] = memoria_cache[proxima_posicao]
-  # coloca a posição que acabou de ser lida na topo da lista, assim, ela nesse momento é a última que será removida
+  # coloca a posição que acabou de ser lida na topo da lista, assim, ela nesse momento e a ultima que sera removida
   memoria_cache[lista_posicoes[-1]] = posicao_memoria
 
 
