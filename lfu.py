@@ -1,4 +1,5 @@
 import functions
+import random
 
 def politica_substituicao_LFU(memoria_cache, num_conjuntos, posicao_memoria,contador_lfu):
   """Nessa politica de substituicao, o elemento menos acessado e removido. 
