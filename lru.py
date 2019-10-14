@@ -1,5 +1,6 @@
 import functions
 
+
 def politica_substituicao_LRU(memoria_cache, num_conjuntos, posicao_memoria, posicao_cache_hit, flag_hit):
   """Nessa politica de substituicao quando ocorre um cache hit a posicao vai para o fim da fila,
   se ocorrer um cache miss remove o elemento 0 e a posição da cache onde a memória foi alocada e
