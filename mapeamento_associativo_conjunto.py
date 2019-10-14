@@ -4,7 +4,9 @@ import lru
 import lfu
 import aleatorio
 
-def executar_mapeamento_associativo_conjunto(tam_cache, num_conjuntos, posicoes_acesso_memoria, politica_substituicao='RANDOM'):
+
+
+def executar_mapeamento_associativo_conjunto(tam_cache, num_conjuntos, posicoes_acesso_memoria, politica_substituicao):
   """Executa a operacaoo de mapeamento associativo por conjunto
   """
 
