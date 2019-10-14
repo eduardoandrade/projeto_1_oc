@@ -45,11 +45,11 @@ def executar_mapeamento_associativo_conjunto(tam_cache, num_conjuntos, posicoes_
 
   # se a politica for FIFO entao inicializa a lista de controle
   if politica_substituicao == 'FIFO':
-    functions.inicializar_contador_fifo( num_conjuntos)
+    inicializar_contador_fifo( num_conjuntos)
 
   # se a politica for LFU entao inicializa a lista de controle
   if politica_substituicao == 'LFU':
-    functions.inicializar_contador_lfu(tam_cache)
+    inicializar_contador_lfu(tam_cache)
 
   # percorre cada uma das posicoes de memoria que estavam no arquivo
   for index, posicao_memoria in enumerate(posicoes_acesso_memoria):
@@ -90,9 +90,9 @@ def executar_mapeamento_associativo_conjunto(tam_cache, num_conjuntos, posicoes_
       elif politica_substituicao == 'RANDOM':
         aleatorio.politica_substituicao_RANDOM(memoria_cache,num_conjuntos,posicao_memoria)
       elif politica_substituicao == 'FIFO':
-        fifo.politica_substituicao_FIFO(memoria_cache,num_conjuntos,posicao_memoria)
+        fifo.politica_substituicao_FIFO(memoria_cache,num_conjuntos,posicao_memoria,contador_fifo)
       elif politica_substituicao == 'LFU':
-        lfu.politica_substituicao_LFU(memoria_cache,num_conjuntos,posicao_memoria)
+        lfu.politica_substituicao_LFU(memoria_cache,num_conjuntos,posicao_memoria,contador_lfu)
       elif politica_substituicao == 'LRU':
         lru.politica_substituicao_LRU(memoria_cache,num_conjuntos,posicao_memoria,0,0)
 
