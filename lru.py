@@ -6,17 +6,17 @@ def politica_substituicao_LRU(memoria_cache, num_conjuntos, posicao_memoria, pos
   colocada no fim da fila
   """
 
-  num_conjunto = get_num_conjunto_posicao_memoria(posicao_memoria, num_conjuntos)
-  lista_posicoes = get_lista_posicoes_cache_conjunto(memoria_cache,num_conjunto, num_conjuntos)
+  num_conjunto = functions.get_num_conjunto_posicao_memoria(posicao_memoria, num_conjuntos)
+  lista_posicoes = functions.get_lista_posicoes_cache_conjunto(memoria_cache,num_conjunto, num_conjuntos)
 
 
 
-  if flag_hit ==0: # copia os valores de cada posicao da cache uma posição para traz em caso de miss
+  if flag_hit ==0: # copia os valores de cada posicao da cache uma posição para frente em caso de miss
       for posicao_cache in lista_posicoes:
         proxima_posicao = posicao_cache+num_conjuntos
         if proxima_posicao < len(memoria_cache):
           memoria_cache[posicao_cache] = memoria_cache[proxima_posicao]
-  if flag_hit ==1:  # copia os valores de cada posicao da cache uma posição para traz em caso de hit
+  if flag_hit ==1:  # copia os valores de cada posicao da cache uma posição para frente em caso de hit
       for posicao_cache in lista_posicoes:
         if posicao_cache_hit <= posicao_cache:
           proxima_posicao = posicao_cache+num_conjuntos
