@@ -10,7 +10,7 @@ def existe_posicao_vazia(memoria_cache, num_conjuntos, posicao_memoria):
       return x
   return -1
 
-def imprimir_contador_fifo():
+def imprimir_contador_fifo(contador_fifo):
   print('+--------------------------------------+')
   print("| Contador FIFO                        |")
   print('+--------------------------------------+')
@@ -20,18 +20,8 @@ def imprimir_contador_fifo():
     print("|{:>9}|{:>28}|".format(index,x))
   print('+---------+----------------------------+')
   
-def inicializar_contador_fifo(num_conjuntos):
-  """Preenche o contador fifo para que a primeira subsitituicao
-  ocorra no primeiro elemento do conjunto
-  """
-  # cria no contador fifo uma posicao para cada conjunto e preenche com a primeira posicao
-  for x in range(0, num_conjuntos):
-    contador_fifo[x] = 0
 
-
-  imprimir_contador_fifo()
-
-def imprimir_contador_lfu():
+def imprimir_contador_lfu(contador_lfu):
   print('+--------------------------------------+')
   print("| Contador LFU                         |")
   print('+--------------------------------------+')
@@ -41,16 +31,7 @@ def imprimir_contador_lfu():
     print("|{:>9}|{:>28}|".format(index,contador_lfu[x]))
   print('+---------+----------------------------+')
   
-def inicializar_contador_lfu(tam_cache):
-  """Preenche o contador LFU para cada posicao da cache. Todas as posicao comecam zeradas e a cada
-  cache hit a posicao e incrementada, a posicao e zerada quando for substituida
-  """
-  # cria on contador LFU uma posicao para cada posicao de memoria
-  for x in range(0, tam_cache):
-    contador_lfu[x] = 0
 
-
-  imprimir_contador_lfu()
 
 def get_num_conjunto_posicao_memoria(posicao_memoria, num_conjuntos):
   """Retorna o numero do conjunto onde essa posicao de memoria esta mapeada
