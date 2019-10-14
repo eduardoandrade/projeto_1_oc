@@ -1,13 +1,13 @@
 import functions
 
-def politica_substituicao_FIFO(memoria_cache, num_conjuntos, posicao_memoria):
+def politica_substituicao_FIFO(memoria_cache, num_conjuntos, posicao_memoria,contador_fifo):
   """Nessa politica de substituição, o primeiro elemento que entra é o primeiro elemento que sai
   """
   num_conjunto = functions.get_num_conjunto_posicao_memoria(posicao_memoria, num_conjuntos)
   posicao_substituir = contador_fifo[num_conjunto]
   lista_posicoes = functions.get_lista_posicoes_cache_conjunto(memoria_cache,num_conjunto, num_conjuntos)
 
-  functions.imprimir_contador_fifo()
+  functions.imprimir_contador_fifo(contador_fifo)
   print('Posição Memória: {}'.format(posicao_memoria))
   print('Conjunto: {}'.format(num_conjunto))
   print('Lista posições: {}'.format(lista_posicoes))
