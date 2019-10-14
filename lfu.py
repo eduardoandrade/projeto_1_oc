@@ -1,27 +1,20 @@
 import functions
 
 def politica_substituicao_LFU(memoria_cache, num_conjuntos, posicao_memoria):
-  """Nessa politica de substituição, o elemento que é menos acessado é removido da
-  memória cache quando ocorrer um CACHE MISS. A cada CACHE HIT a posição do HIT ganha um ponto
-  de acesso, isso é usado como contador para saber qual posição deve ser removida no caso de
-  CACHE MISS.
-
-  Arguments:
-    memoria_cache {list} -- memóiria cache
-    num_conjuntos {int} -- quantidade de conjuntos
-    posicao_memoria {int} -- posição de memória que será acessada
+  """Nessa politica de substituicao, o elemento menos acessado e removido. 
+  A cada cache hit a posicao e incrementada, isso e usado para saber qual a proxima posicao deve ser removida
   """
   num_conjunto = get_num_conjunto_posicao_memoria(posicao_memoria, num_conjuntos)
   lista_posicoes = get_lista_posicoes_cache_conjunto(memoria_cache,num_conjunto, num_conjuntos)
 
-  # descobrir dentro do conjunto qual posição da cache tem menos acesso
+  # descobre qual posicao da cache tem menos acesso
   posicao_substituir = 0
   if len(lista_posicoes) > 1:
 
 
     imprimir_contador_lfu()
 
-    # descobrir qual das posições é menos usada
+    # descobre qual das posicoes e menos usada
     lista_qtd_acessos = []
     for qtd_acessos in lista_posicoes:
       lista_qtd_acessos.append(contador_lfu[qtd_acessos])
@@ -33,14 +26,13 @@ def politica_substituicao_LFU(memoria_cache, num_conjuntos, posicao_memoria):
       if contador_lfu[qtd_acessos] == posicoes_com_menos_acesso:
         candidatos_lfu.append(qtd_acessos)
 
-    # para garantir ordem aleatória de escolha caso duas ou mais posições
-    # tenham o mesmo número de acessos
+    # escolhe aleatoriamente uma posicao dentre as que possuem menor numero de acessos
     posicao_substituir = random.choice(candidatos_lfu)
 
-  # zera o número de acessos a posição que foi substituida
+  # zera o numero de acessos da posicao que foi substituida
   contador_lfu[posicao_substituir] = 0
 
-  # altera a posição de memória que está na cache
+  # altera a posicao de memoria na cache
   memoria_cache[posicao_substituir] = posicao_memoria
 
   print('Posição Memória Lida No Arquivo: {}'.format(posicao_memoria))
