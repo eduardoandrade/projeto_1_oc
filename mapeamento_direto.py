@@ -1,29 +1,23 @@
 import functions
 
 def executar_mapeamento_direto(tam_cache, posicoes_acesso_memoria):
-  """Executa a operação de mapeamento direto.
-
-  Arguments:
-    tam_cache {int} -- tamanho total de palavras da cache
-    posicoes_acesso_memoria {list} - quais são as posições de memória que devem ser acessadas
+  """Executa a operacao de mapeamento direto.
   """
-  # zera tota a memória cache
+  # zera tota a memoria cache
   memoria_cache = functions.inicializar_cache(tam_cache)
 
-  print('Situação Inicial da Memória Cache')
+  print('Situação Inicial da Memoria Cache')
   functions.print_memoria_cache(memoria_cache,0)
 
   hmstatus = ''
   num_hit = 0;
   num_miss = 0
   for index, posicao_memoria in enumerate(posicoes_acesso_memoria):
-    # no mapeamento direto, cada posição da memória principal tem uma posição
-    # específica na memória cache, essa posição será calculada em função
-    # do mod da posição acessada em relação ao tamanho total da cache
+    # no mapeamento direto, cada posição da memoria principal tem uma posição
+    # especifica na memoria cache
     posicao_cache = posicao_memoria % tam_cache
 
-    # se a posição de memória principal armazenada na linha da cache for a posição
-    # desejada então dá hit, caso contrário da miss
+    # contador de hits ou misses
     if memoria_cache[posicao_cache] == posicao_memoria:
       num_hit += 1
       hmstatus = 'Hit'
