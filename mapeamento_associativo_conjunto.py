@@ -4,6 +4,14 @@ import lru
 import lfu
 import aleatorio
 
+# Lista que irá armazenar o número de vezes que uma determinada posição da memória cache foi acessada.
+contador_lfu = {}
+
+
+# Lista que  irá armazenar a ordem que a posição da memória principal foi inserida na memória cache
+# a posição 0 dessa lista será removida em caso de cache miss
+contador_fifo = {}
+
 def inicializar_contador_fifo(num_conjuntos):
   """Preenche o contador fifo para que a primeira subsitituicao
   ocorra no primeiro elemento do conjunto
